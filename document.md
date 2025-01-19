@@ -59,7 +59,7 @@ sudo chmod 777 /var/run/docker.sock
 Clone the provided repository containing the microservices:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ankitalodha05/Microservices-Task.git
 cd Microservices-Task-main
 ```
 
