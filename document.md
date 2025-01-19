@@ -10,8 +10,8 @@ This document provides step-by-step instructions to complete the microservices c
    - Launch an EC2 instance with Ubuntu 20.04 or similar.
    - Ensure security group rules allow inbound traffic on ports `3000-3003` and SSH (port `22`).
 
-2. **Installed Tools**
-   - SSH client (e.g., PuTTY or Terminal).
+2. **Connect to instance**
+   - SSH client (Terminal)
 
 ---
 
