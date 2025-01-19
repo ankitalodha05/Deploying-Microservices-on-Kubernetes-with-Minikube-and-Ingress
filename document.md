@@ -25,15 +25,17 @@ sudo apt install -y docker.io
 ```
 
 ### Verify Docker Installation:
+
 ```bash
 docker --version
 ```
-You should see the installed Docker version.
 
+You should see the installed Docker version.
 ---
 
 ## **Step 2: Install Docker Compose**
 
+```bash
 sudo apt  install docker-compose
 ```
 
