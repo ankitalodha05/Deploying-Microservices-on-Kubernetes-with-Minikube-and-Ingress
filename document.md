@@ -209,18 +209,21 @@ docker-compose up --build
 ---
 
 ## **Screenshots**
-Attach the following:
-1. Docker Compose build and service creation output.
-2. `docker ps` showing running containers.
-3. Browser screenshots of working endpoints.
+1. Docker Compose build and service creation output tested locally.
+-![image](https://github.com/user-attachments/assets/e2b3a7cd-1c62-40df-8db8-928a7e5e71a1)
+
+3. `docker ps` showing running containers.
+-![image](https://github.com/user-attachments/assets/578489a1-921d-4d3d-b029-27eb0fe34030)
+
+
+4. Browser screenshots of working endpoints.
+-![image](https://github.com/user-attachments/assets/b0df9ee3-e1aa-462a-a8e1-f986a0ff3501)
+-![image](https://github.com/user-attachments/assets/94877d01-f52c-49be-8c47-067c10188d5c)
+-![image](https://github.com/user-attachments/assets/9523c49d-1150-41ef-9eb9-c9f1fc71ca60)
+-![image](https://github.com/user-attachments/assets/e7281b62-ba71-4ace-887d-5f3f27608f12)
+
+
+
+
 
 ---
-
-## **Submission**
-Create a ZIP file containing:
-1. All `Dockerfile`s.
-2. `docker-compose.yml`.
-3. `README.md` (this file).
-4. Screenshots of successful output.
-
-Submit the ZIP file through the designated submission system.
