@@ -34,19 +34,12 @@ You should see the installed Docker version.
 
 ## **Step 2: Install Docker Compose**
 
-Install Docker Compose plugin:
-
-```bash
-DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-mkdir -p $DOCKER_CONFIG/cli-plugins
-curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
-    -o $DOCKER_CONFIG/cli-plugins/docker-compose
-chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+sudo apt  install docker-compose
 ```
 
 ### Verify Docker Compose Installation:
 ```bash
-docker compose version
+docker-compose --version
 ```
 
 ---
@@ -56,17 +49,8 @@ docker compose version
 Grant permissions to the Docker socket so the current user can run Docker commands without `sudo`:
 
 ```bash
-sudo chmod 666 /var/run/docker.sock
+sudo chmod 777 /var/run/docker.sock
 ```
-
-Alternatively, add the current user to the Docker group (recommended):
-
-```bash
-sudo usermod -aG docker $USER
-```
-Log out and log back in for the group changes to take effect.
-
----
 
 ## **Step 4: Clone the Repository**
 
