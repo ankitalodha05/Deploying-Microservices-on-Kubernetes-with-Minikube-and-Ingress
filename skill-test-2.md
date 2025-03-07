@@ -289,14 +289,6 @@ curl http://order-service:3002
 curl http://gateway-service:3003
 ```
 
--![image](https://github.com/user-attachments/assets/2520e0ee-d950-4b35-be6e-5979e5f60052)
-
--![image](https://github.com/user-attachments/assets/006b9099-fb0a-42e2-ae38-defcf60496ac)
-
--![Screenshot 2025-03-06 130714](https://github.com/user-attachments/assets/b2a6962a-17bf-4ecd-996d-1d15b52b12bc)
-
--![Screenshot 2025-03-06 130728](https://github.com/user-attachments/assets/7035be54-8c8e-4284-822e-bc5d0e5de8ee)
-
 -![image](https://github.com/user-attachments/assets/c56e4456-ee0e-4d7c-99f3-87c92de82411)
 
 -![image](https://github.com/user-attachments/assets/7e8942c0-e33c-4172-afd4-c90c25ec6247)
