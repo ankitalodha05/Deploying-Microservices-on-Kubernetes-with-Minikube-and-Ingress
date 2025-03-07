@@ -90,6 +90,7 @@ docker push ankitalodha05/product
 docker push ankitalodha05/order
 docker push ankitalodha05/gateway
 ```
+-![image](https://github.com/user-attachments/assets/19b6cdfc-9a3c-42c0-9b8e-953aff3e12b6)
 
 ### Step 2: Start Minikube
 
@@ -242,20 +243,28 @@ kubectl apply -f k8s-manifests/deployments/
 kubectl apply -f k8s-manifests/services/
 kubectl apply -f k8s-manifests/ingress/
 ```
+-![image](https://github.com/user-attachments/assets/c589c4b2-f277-4bb3-9bf6-44427e36f766)
+-![image](https://github.com/user-attachments/assets/1a5e87ed-3008-44bc-a906-4bc5810c41ae)
+-![image](https://github.com/user-attachments/assets/50edfb8b-6be2-451c-8e3a-4fa18aaefee7)
 
 ## **Verify Deployment**
 ### **Check Running Pods:**
 ```bash
 kubectl get pods
 ```
+-![image](https://github.com/user-attachments/assets/4e305351-ab9e-42bb-9079-78eba66077a7)
+
+
 ### **Check Services:**
 ```bash
 kubectl get svc
 ```
+-
 ### **Check Ingress:**
 ```bash
 kubectl get ingress
 ```
+-![image](https://github.com/user-attachments/assets/4f3f2783-ab8c-428b-a158-595db80b0c42)
 
 ---
 ## **Access Services**
@@ -268,15 +277,11 @@ minikube ip
 192.168.49.2 microservices.local
 
 ## 4️⃣ Testing the Deployment
+-![image](https://github.com/user-attachments/assets/2520e0ee-d950-4b35-be6e-5979e5f60052)
 
-Run the following:
-
-```sh
-curl http://192.168.49.2/users
-curl http://192.168.49.2/products
-curl http://192.168.49.2/orders
-curl http://192.168.49.2/
-```
+-![image](https://github.com/user-attachments/assets/006b9099-fb0a-42e2-ae38-defcf60496ac)
+-![Screenshot 2025-03-06 130714](https://github.com/user-attachments/assets/b2a6962a-17bf-4ecd-996d-1d15b52b12bc)
+-![Screenshot 2025-03-06 130728](https://github.com/user-attachments/assets/7035be54-8c8e-4284-822e-bc5d0e5de8ee)
 
 ---
 
