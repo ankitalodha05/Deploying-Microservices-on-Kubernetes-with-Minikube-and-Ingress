@@ -296,6 +296,3 @@ kubectl apply -f k8s-manifests/
 ## 📌 Conclusion
 
 🎯 This document provides a **step-by-step guide** to deploying and testing a microservices architecture in **Kubernetes using Minikube**.
-
-🚀 **Now you're ready to submit the assessment!** 🎉
-
