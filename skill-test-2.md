@@ -289,7 +289,6 @@ curl http://order-service:3002
 curl http://gateway-service:3003
 ```
 
--![image](https://github.com/user-attachments/assets/c56e4456-ee0e-4d7c-99f3-87c92de82411)
 
 -![image](https://github.com/user-attachments/assets/7e8942c0-e33c-4172-afd4-c90c25ec6247)
 
