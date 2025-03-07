@@ -1,34 +1,49 @@
-# Microservices Kubernetes Deployment Guide
+# Microservices Kubernetes Deployment Assessment
 
-## **Objective**
-Deploy a microservices application on Kubernetes using Minikube, implementing proper service communication and ingress configuration.
+**By:** Ankita Lodha
 
 ---
 
-## 📌 Prerequisites
+## 📌 Objective
+
+This document provides a step-by-step guide for deploying a **microservices application** on Kubernetes using **Minikube**, ensuring proper **service communication** and **Ingress configuration**.
+
+---
+
+## 1️⃣ Minikube Setup and Initialization
+
+### 🔹 Prerequisites
 
 Microservices application code hosted in GitHub repository
 
-- Fork [https://github.com/mohanDevOps-arch/Microservices-Task.git](https://github.com/mohanDevOps-arch/Microservices-Task.git) to [https://github.com/ankitalodha05/Microservices-Task-1.git](https://github.com/ankitalodha05/Microservices-Task-1.git)
-- Make sure Docker & Docker Compose, kubectl, and Minikube are installed on your machine.
+Fork [https://github.com/mohanDevOps-arch/Microservices-Task.git](https://github.com/mohanDevOps-arch/Microservices-Task.git) to [https://github.com/ankitalodha05/Microservices-Task-1.git](https://github.com/ankitalodha05/Microservices-Task-1.git)
+
+Ensure the following tools are installed:
+
+- **Docker Desktop**
+- **Minikube**
+- **Kubectl**
+- **Node.js** (for testing locally)
 
 Clone the GitHub repository:
-```bash
+
+```sh
 git clone https://github.com/ankitalodha05/Microservices-Task-1.git
-cd Microservices-Task-1.git
+cd Microservices-Task-1
 ```
 
----
+### Step 1: Create Dockerfiles for Microservices
 
-## **Step 1: Create Dockerfiles for Microservices**
-Each microservice (User, Product, Order, Gateway) requires a `Dockerfile` inside its respective folder.
+Each microservice (User, Product, Order, Gateway) requires a Dockerfile inside its respective folder.
 
-1. **Navigate to the microservices directory:**
-```bash
+Navigate to the microservices directory:
+
+```sh
 cd Microservices
 ```
 
-2. **Create a `Dockerfile` for each microservice:**
+Create a Dockerfile for each microservice:
+
 ```dockerfile
 # Dockerfile
 FROM node:16-alpine
@@ -46,115 +61,78 @@ RUN npm install
 COPY . .
 
 # Expose the service port
-EXPOSE 3003
+EXPOSE 3000
 
 # Start the service
 CMD ["node", "app.js"]
 ```
 
-3. **Build and tag Docker images:**
-```bash
+Build and tag Docker images:
+
+```sh
 docker build -t ankitalodha05/<microservice-name>:latest .
 ```
+
 Example:
-```bash
-docker build -t ankitalodha05/user-service:latest .
-docker build -t ankitalodha05/product-service:latest .
-docker build -t ankitalodha05/order-service:latest .
-docker build -t ankitalodha05/gateway-service:latest .
+
+```sh
+docker build -t ankitalodha05/user .
+docker build -t ankitalodha05/product .
+docker build -t ankitalodha05/order .
+docker build -t ankitalodha05/gateway .
 ```
 
-4. **Push images to Docker Hub:**
-```bash
-docker push ankitalodha05/<microservice-name>:latest
+Push images to Docker Hub:
+
+```sh
+docker push ankitalodha05/user
+docker push ankitalodha05/product
+docker push ankitalodha05/order
+docker push ankitalodha05/gateway
 ```
 
----
+### Step 2: Start Minikube
 
-## **Step 2: Create Docker Compose File**
-Create a `docker-compose.yml` file to run all microservices simultaneously.
+Run the following command to start **Minikube with Docker**:
 
-```yaml
-version: "3.8"
-services:
-  user-service:
-    build:
-      context: ./user-service
-    ports:
-      - "3000:3000"
-    networks:
-      - microservices-network
-  product-service:
-    build:
-      context: ./product-service
-    ports:
-      - "3001:3001"
-    networks:
-      - microservices-network
-  order-service:
-    build:
-      context: ./order-service
-    ports:
-      - "3002:3002"
-    networks:
-      - microservices-network
-  gateway-service:
-    build:
-      context: ./gateway-service
-    ports:
-      - "3003:3003"
-    networks:
-      - microservices-network
-    depends_on:
-      - user-service
-      - product-service
-      - order-service
-
-networks:
-  microservices-network:
-    driver: bridge
-
-```
-
-**Run the services:**
-```bash
-docker-compose up
-```
-
----
-
-## **Step 3: Install & Setup Minikube**
-1. **Install Minikube** ([Download Here](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download))
-2. **Start Minikube:**
-```bash
+```sh
 minikube start --driver=docker
 ```
-3. **Enable Ingress Controller:**
-```bash
+
+Verify that Minikube is running:
+
+```sh
+kubectl get nodes
+```
+
+Enable **Ingress** on Minikube:
+
+```sh
 minikube addons enable ingress
 ```
 
+Verify that the Ingress controller is running:
+
+```sh
+kubectl get pods -n ingress-nginx
+```
+
 ---
 
-## **Step 4: Create Kubernetes Manifests**
-### **Folder Structure:**
-```
-k8s-manifests/
-├── deployments/
-│   ├── user-service.yaml
-│   ├── product-service.yaml
-│   ├── order-service.yaml
-│   └── gateway-service.yaml
-├── services/
-│   ├── user-service.yaml
-│   ├── product-service.yaml
-│   ├── order-service.yaml
-│   └── gateway-service.yaml
-└── ingress/
-    └── ingress.yaml
-```
+## 2️⃣ Deploying Microservices
 
-### **Deployment YAML (Example for User Service):**
+Each microservice will have:
+
+✔ **Deployment YAML**\
+✔ **Service YAML**\
+✔ **Correct ports, health probes, environment variables, and labels**
+
+### 🔹 Deployment YAMLs
+
+These files should be in the **`deployments/` directory**.
+
+#### 1️⃣ User Service (`deployments/user-service.yaml`)
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -172,74 +150,100 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: ankitalodha05/user
+          image: ankitalodha05/user-service:latest
           ports:
             - containerPort: 3000
-          resources:
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
-            requests:
-              memory: "128Mi"
-              cpu: "250m"
-          command: ["node" ,"app.js"]
-          args: []
-
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 10
 ```
 
-### **Ingress YAML:**
+Repeat similar deployments for **Product Service, Order Service, and Gateway Service**.
+
+---
+
+### 🔹 Service YAMLs
+
+These files should be in the **`services/` directory**.
+
+#### User Service (`services/user-service.yaml`)
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+spec:
+  type: NodePort
+  selector:
+    app: user-service
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+```
+
+Repeat the **same structure** for **Product, Order, and Gateway services**.
+
+---
+
+## 3️⃣ Ingress Configuration
+
+Your Ingress configuration should be in **`ingress/ingress.yaml`**.
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: microservices-ingress
 spec:
+  ingressClassName: nginx
   rules:
-  - host: microservices.local
-    http:
-      paths:
-      - path: /api/users
-        pathType: Prefix
-        backend:
-          service:
-            name: user-service
-            port:
-              number: 80
-      - path: /api/products
-        pathType: Prefix
-        backend:
-          service:
-            name: product-service
-            port:
-              number: 80
-      - path: /api/orders
-        pathType: Prefix
-        backend:
-          service:
-            name: order-service
-            port:
-              number: 80
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: gateway-service
-            port:
-              number: 80
-
-
+    - host: microservices.local
+      http:
+        paths:
+          - path: /users
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 3000
+          - path: /products
+            pathType: Prefix
+            backend:
+              service:
+                name: product-service
+                port:
+                  number: 3001
+          - path: /orders
+            pathType: Prefix
+            backend:
+              service:
+                name: order-service
+                port:
+                  number: 3002
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway-service
+                port:
+                  number: 3003
 ```
 
-**Apply the manifests:**
-```bash
+Apply the manifests:
+
+```sh
 kubectl apply -f k8s-manifests/deployments/
 kubectl apply -f k8s-manifests/services/
 kubectl apply -f k8s-manifests/ingress/
 ```
 
----
-
-## **Step 5: Verify Deployment**
+## **Verify Deployment**
 ### **Check Running Pods:**
 ```bash
 kubectl get pods
@@ -254,8 +258,7 @@ kubectl get ingress
 ```
 
 ---
-
-## **Step 6: Access Services**
+## **Access Services**
 1. **Get Minikube IP:**
 ```bash
 minikube ip
@@ -263,29 +266,36 @@ minikube ip
 2. **Add to `/etc/hosts` (Linux/macOS) or `C:\Windows\System32\drivers\etc\hosts` (Windows):**
 ```
 192.168.49.2 microservices.local
-```
-3. **Flush DNS (Windows):**
-```powershell
-ipconfig /flushdns
-```
-4. **Access Services:**
-```bash
-curl http://microservices.local/user
+
+## 4️⃣ Testing the Deployment
+
+Run the following:
+
+```sh
+curl http://192.168.49.2/users
+curl http://192.168.49.2/products
+curl http://192.168.49.2/orders
+curl http://192.168.49.2/
 ```
 
 ---
 
-## **Final Checklist**
-✅ Hosts file updated (`192.168.49.2 microservices.local`)
-✅ Flushed DNS cache (`ipconfig /flushdns`)
-✅ Minikube running (`minikube status`)
-✅ Ingress enabled (`minikube addons enable ingress`)
-✅ Services running (`kubectl get svc`)
+## 5️⃣ Troubleshooting Guide
 
-If `microservices.local` is still not reachable, access services using:
-```bash
-minikube service user-service --url
+If **Ingress doesn't work**, restart Minikube and reapply configurations:
+
+```sh
+minikube delete
+minikube start --driver=docker
+minikube addons enable ingress
+kubectl apply -f k8s-manifests/
 ```
 
-🎯 **Congratulations! You have successfully deployed a microservices application on Kubernetes using Minikube! 🚀**
+---
+
+## 📌 Conclusion
+
+🎯 This document provides a **step-by-step guide** to deploying and testing a microservices architecture in **Kubernetes using Minikube**.
+
+🚀 **Now you're ready to submit the assessment!** 🎉
 
