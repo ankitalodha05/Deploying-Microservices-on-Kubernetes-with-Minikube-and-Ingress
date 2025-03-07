@@ -244,7 +244,9 @@ kubectl apply -f k8s-manifests/services/
 kubectl apply -f k8s-manifests/ingress/
 ```
 -![image](https://github.com/user-attachments/assets/c589c4b2-f277-4bb3-9bf6-44427e36f766)
+
 -![image](https://github.com/user-attachments/assets/1a5e87ed-3008-44bc-a906-4bc5810c41ae)
+
 -![image](https://github.com/user-attachments/assets/50edfb8b-6be2-451c-8e3a-4fa18aaefee7)
 
 ## **Verify Deployment**
@@ -290,18 +292,24 @@ curl http://gateway-service:3003
 -![image](https://github.com/user-attachments/assets/2520e0ee-d950-4b35-be6e-5979e5f60052)
 
 -![image](https://github.com/user-attachments/assets/006b9099-fb0a-42e2-ae38-defcf60496ac)
+
 -![Screenshot 2025-03-06 130714](https://github.com/user-attachments/assets/b2a6962a-17bf-4ecd-996d-1d15b52b12bc)
+
 -![Screenshot 2025-03-06 130728](https://github.com/user-attachments/assets/7035be54-8c8e-4284-822e-bc5d0e5de8ee)
 
 -![image](https://github.com/user-attachments/assets/c56e4456-ee0e-4d7c-99f3-87c92de82411)
 
----
 -![image](https://github.com/user-attachments/assets/7e8942c0-e33c-4172-afd4-c90c25ec6247)
+
+-![image](https://github.com/user-attachments/assets/67187c4a-b842-4b28-bbb9-b94d096c9797)
+
 
 -![image](https://github.com/user-attachments/assets/a99ea4f1-0122-4bdf-866e-8e1382e52922)
 
 -![image](https://github.com/user-attachments/assets/bd8bb33e-ee42-4308-95d1-0fc734eb53e5)
+
 -![image](https://github.com/user-attachments/assets/abf39ba6-fbfd-49bc-905d-ec601f528025)
+
 -![image](https://github.com/user-attachments/assets/69989cdf-bf47-47b8-84b3-8bb91f723b85)
 ## 5️⃣ Troubleshooting Guide
 
