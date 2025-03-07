@@ -285,6 +285,18 @@ minikube ip
 
 ---
 
+## access the server using minikube ssh:
+
+```bash
+minikube ssh
+curl http://user-service:3000
+curl http://product-service:3001
+curl http://order-service:3002
+curl http://gateway-service:3003
+```
+-![image](https://github.com/user-attachments/assets/c56e4456-ee0e-4d7c-99f3-87c92de82411)
+
+---
 ## 5️⃣ Troubleshooting Guide
 
 If **Ingress doesn't work**, restart Minikube and reapply configurations:
