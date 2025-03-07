@@ -302,6 +302,18 @@ curl http://gateway-service:3003
 If **Ingress doesn't work**, restart Minikube and reapply configurations:
 
 ```sh
+
+-![image](https://github.com/user-attachments/assets/7e8942c0-e33c-4172-afd4-c90c25ec6247)
+
+-![image](https://github.com/user-attachments/assets/a99ea4f1-0122-4bdf-866e-8e1382e52922)
+
+-![image](https://github.com/user-attachments/assets/bd8bb33e-ee42-4308-95d1-0fc734eb53e5)
+-![image](https://github.com/user-attachments/assets/abf39ba6-fbfd-49bc-905d-ec601f528025)
+-![image](https://github.com/user-attachments/assets/69989cdf-bf47-47b8-84b3-8bb91f723b85)
+
+
+
+
 minikube delete
 minikube start --driver=docker
 minikube addons enable ingress
