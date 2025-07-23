@@ -1,4 +1,4 @@
-# Microservices Containerization Assignment
+# Microservices Containerization and Deployment on EC2
 
 This document provides step-by-step instructions to complete the microservices containerization assignment, including installation of Docker and Docker Compose, granting appropriate permissions, containerizing the services, and deploying them on an EC2 instance.
 
