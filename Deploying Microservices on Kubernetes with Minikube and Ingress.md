@@ -1,4 +1,4 @@
-# Microservices Kubernetes Deployment Assessment
+# Deploying Microservices on Kubernetes with Minikube and Ingress
 
 **By:** Ankita Lodha
 
